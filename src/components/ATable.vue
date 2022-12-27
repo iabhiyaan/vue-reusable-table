@@ -15,7 +15,10 @@
       <template v-else>
         <tr v-for="(row, i) in rows" :key="row[rowKey]" :id="row[rowKey]">
           <td v-for="(col, j) in columns" :key="j">
-            {{ getRowValueFromCol(row, col) }}
+            <slot :name="`body-cell-${col.name}`" :row="row"></slot>
+            <template>
+              {{ getRowValueFromCol(row, col) }}
+            </template>
           </td>
         </tr>
       </template>
@@ -60,6 +63,7 @@ export default {
 
       return value;
     },
+    hasBodyCellColNameSlot(colName) {},
   },
 };
 </script>

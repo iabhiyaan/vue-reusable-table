@@ -1,7 +1,11 @@
 <template>
   <div>
     Table Component
-    <ATable title="Treats" :rows="rows" :columns="columns" />
+    <ATable title="Treats" :rows="rows" :columns="columns">
+      <template #body-cell-calories="props">
+        {{ props.row.calories }}
+      </template>
+    </ATable>
   </div>
 </template>
 

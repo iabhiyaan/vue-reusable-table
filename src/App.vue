@@ -3,7 +3,7 @@
     Table Component
     <ATable title="Treats" :rows="rows" :columns="columns">
       <template #body-cell-calories="props">
-        {{ props.row.calories }}
+        {{ props.row.calories / 100 }} percent
       </template>
     </ATable>
   </div>

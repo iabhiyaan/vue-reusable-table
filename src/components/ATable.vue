@@ -15,10 +15,9 @@
       <template v-else>
         <tr v-for="(row, i) in rows" :key="row[rowKey]" :id="row[rowKey]">
           <td v-for="(col, j) in columns" :key="j">
-            <slot :name="`body-cell-${col.name}`" :row="row"></slot>
-            <template>
+            <slot :name="`body-cell-${col.name}`" :row="row">
               {{ getRowValueFromCol(row, col) }}
-            </template>
+            </slot>
           </td>
         </tr>
       </template>

@@ -6,11 +6,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(row, i) in rows" :key="row[rowKey]" :id="row[rowKey]">
-        <td v-for="(col, j) in columns" :key="j">
-          {{ getRowValueFromCol(row, col) }}
-        </td>
-      </tr>
+      <template v-if="$slots.body">
+        <template v-for="(row, i) in rows" :key="row[rowKey]" :id="row[rowKey]">
+          <slot name="body" :row="row"></slot>
+        </template>
+      </template>
+
+      <template v-else>
+        <tr v-for="(row, i) in rows" :key="row[rowKey]" :id="row[rowKey]">
+          <td v-for="(col, j) in columns" :key="j">
+            {{ getRowValueFromCol(row, col) }}
+          </td>
+        </tr>
+      </template>
     </tbody>
   </table>
 </template>
